@@ -1,0 +1,2 @@
+Rule,Severity,Row,Column,Message
+DQ-02,CRITICAL,2,id,Duplicate Primary Key

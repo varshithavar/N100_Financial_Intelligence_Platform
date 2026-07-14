@@ -1,0 +1,45 @@
+PRAGMA foreign_keys = ON;
+
+CREATE TABLE IF NOT EXISTS dim_company (
+
+    company_id INTEGER PRIMARY KEY,
+
+    ticker TEXT UNIQUE,
+
+    company_name TEXT NOT NULL,
+
+    sector TEXT,
+
+    industry TEXT
+
+);
+
+CREATE TABLE IF NOT EXISTS dim_year (
+
+    year INTEGER PRIMARY KEY
+
+);
+
+CREATE TABLE IF NOT EXISTS fact_financials (
+
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+    company_id INTEGER,
+
+    year INTEGER,
+
+    sales REAL,
+
+    profit REAL,
+
+    assets REAL,
+
+    liabilities REAL,
+
+    FOREIGN KEY(company_id)
+        REFERENCES dim_company(company_id),
+
+    FOREIGN KEY(year)
+        REFERENCES dim_year(year)
+
+);
