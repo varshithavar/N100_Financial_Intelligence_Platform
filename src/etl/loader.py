@@ -1,39 +1,33 @@
 import sqlite3
+import pandas as pd
 from pathlib import Path
 
-# Project root
 BASE_DIR = Path(__file__).resolve().parents[2]
 
-# Database file
 DB_PATH = BASE_DIR / "database" / "nifty100.db"
 
-# SQL schema
-SCHEMA_PATH = BASE_DIR / "sql" / "schema.sql"
 
+def load_excel(file_path, table_name=None):
+    """
+    Load Excel file data.
+    Returns dataframe when table_name is not provided.
+    Loads into SQLite when table_name is provided.
+    """
 
-def create_database():
-    # Create database folder
-    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+    df = pd.read_excel(file_path)
 
-    # Connect to SQLite (creates nifty100.db if it doesn't exist)
+    if table_name is None:
+        return df
+
     conn = sqlite3.connect(DB_PATH)
 
-    # Enable foreign keys
-    conn.execute("PRAGMA foreign_keys = ON;")
+    df.to_sql(
+        table_name,
+        conn,
+        if_exists="append",
+        index=False
+    )
 
-    # Run schema.sql
-    if SCHEMA_PATH.exists():
-        with open(SCHEMA_PATH, "r", encoding="utf-8") as f:
-            conn.executescript(f.read())
-        print("Schema created successfully.")
-    else:
-        print("schema.sql not found!")
-
-    conn.commit()
     conn.close()
 
-    print(f"Database created: {DB_PATH}")
-
-
-if __name__ == "__main__":
-    create_database()
+    return len(df)
