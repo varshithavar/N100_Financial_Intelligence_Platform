@@ -2,18 +2,21 @@
 Financial Ratio Engine
 Sprint 2 - Day 08 & Day 09
 
-Contains profitability, leverage and efficiency calculations.
+Profitability, Leverage and Efficiency Ratios
 """
 
 
-# -----------------------------
-# Profitability Ratios
-# -----------------------------
+# =====================================================
+# Day 08 - Profitability Ratios
+# =====================================================
 
 
 def net_profit_margin(net_profit, sales):
     """
     Net Profit Margin %
+
+    Formula:
+    Net Profit / Sales * 100
     """
 
     if sales == 0:
@@ -31,7 +34,7 @@ def operating_profit_margin(
     """
     Operating Profit Margin %
 
-    Cross checks against source OPM
+    Cross-check with source OPM
     """
 
     if sales == 0:
@@ -65,12 +68,15 @@ def return_on_equity(
         reserves
 ):
     """
-    ROE %
+    Return on Equity %
 
-    Returns None for negative equity
+    Returns None if equity <= 0
     """
 
-    equity = equity_capital + reserves
+    equity = (
+        equity_capital +
+        reserves
+    )
 
 
     if equity <= 0:
@@ -79,24 +85,6 @@ def return_on_equity(
 
     return (
         net_profit / equity
-    ) * 100
-
-
-
-def return_on_assets(
-        net_profit,
-        total_assets
-):
-    """
-    ROA %
-    """
-
-    if total_assets == 0:
-        return None
-
-
-    return (
-        net_profit / total_assets
     ) * 100
 
 
@@ -128,9 +116,27 @@ def return_on_capital_employed(
 
 
 
-# -----------------------------
-# Leverage Ratios
-# -----------------------------
+def return_on_assets(
+        net_profit,
+        total_assets
+):
+    """
+    ROA %
+    """
+
+    if total_assets == 0:
+        return None
+
+
+    return (
+        net_profit / total_assets
+    ) * 100
+
+
+
+# =====================================================
+# Day 09 - Leverage & Efficiency Ratios
+# =====================================================
 
 
 def debt_to_equity(
@@ -139,6 +145,8 @@ def debt_to_equity(
 ):
     """
     Debt Equity Ratio
+
+    Debt free company returns 0
     """
 
     if borrowings == 0:
@@ -153,6 +161,29 @@ def debt_to_equity(
 
 
 
+def high_leverage_flag(
+        debt_equity,
+        sector
+):
+    """
+    High leverage warning
+
+    D/E > 5
+    Financial sector ignored
+    """
+
+    if sector == "Financials":
+        return False
+
+
+    if debt_equity is None:
+        return False
+
+
+    return debt_equity > 5
+
+
+
 def interest_coverage(
         operating_profit,
         other_income,
@@ -160,6 +191,8 @@ def interest_coverage(
 ):
     """
     Interest Coverage Ratio
+
+    Returns Debt Free label
     """
 
     if interest == 0:
@@ -172,11 +205,20 @@ def interest_coverage(
     ) / interest
 
 
-    if icr < 1.5:
-        return icr, "Risk"
-
-
     return icr, None
+
+
+
+def icr_warning_flag(icr):
+    """
+    Interest coverage risk flag
+    """
+
+    if icr is None:
+        return False
+
+
+    return icr < 1.5
 
 
 
@@ -186,6 +228,8 @@ def net_debt(
 ):
     """
     Net Debt
+
+    Borrowings - Investments
     """
 
     return borrowings - investments
