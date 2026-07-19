@@ -1,36 +1,103 @@
 import sqlite3
 from pathlib import Path
+import pandas as pd
+
 
 # Project root
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Correct database location
-DATABASE = BASE_DIR / "data" / "db" / "financial_intelligence.db"
+# Database path
+DATABASE = BASE_DIR / "database" / "nifty100.db"
 
-# Correct schema location
-SCHEMA = BASE_DIR / "sql" / "schema.sql"
+# Raw Excel files path
+RAW_DATA = BASE_DIR / "data" / "raw"
 
 
 def create_database():
-    # Create database folder if it doesn't exist
+    """
+    Create/connect SQLite database
+    """
+
     DATABASE.parent.mkdir(parents=True, exist_ok=True)
 
-    # Connect to SQLite
     conn = sqlite3.connect(DATABASE)
 
-    # Enable foreign keys
     conn.execute("PRAGMA foreign_keys = ON;")
 
-    # Read and execute schema.sql
-    with open(SCHEMA, "r", encoding="utf-8") as file:
-        conn.executescript(file.read())
+    print("Database connected successfully")
+
+    return conn
+
+
+def load_excel(conn, file_name, table_name):
+    """
+    Load Excel file into SQLite table
+    """
+
+    file_path = RAW_DATA / file_name
+
+    if not file_path.exists():
+        print(f"File not found: {file_path}")
+        return
+
+
+    df = pd.read_excel(file_path)
+
+    print("\nLoading:", file_name)
+    print("Rows:", len(df))
+
+
+    df.to_sql(
+        table_name,
+        conn,
+        if_exists="replace",
+        index=False
+    )
+
+
+    print("Loaded table:", table_name)
+
+
+def main():
+
+    conn = create_database()
+
+
+    load_excel(
+        conn,
+        "companies.xlsx",
+        "companies"
+    )
+
+
+    load_excel(
+        conn,
+        "profitandloss.xlsx",
+        "profit_loss"
+    )
+
+
+    load_excel(
+        conn,
+        "balancesheet.xlsx",
+        "balance_sheet"
+    )
+
+
+    load_excel(
+        conn,
+        "cashflow.xlsx",
+        "cash_flow"
+    )
+
 
     conn.commit()
     conn.close()
 
-    print("Database created successfully!")
-    print(f"Database: {DATABASE}")
+
+    print("\nData loading completed!")
+    print("Database:", DATABASE)
 
 
 if __name__ == "__main__":
-    create_database()
+    main()

@@ -1,0 +1,61 @@
+================================================================================
+FINANCIAL RATIO EDGE CASES LOG
+================================================================================
+
+Project : N100 Financial Intelligence Platform
+Sprint  : Sprint 2
+Day     : 13
+
+Description:
+This log records anomalies found while comparing computed financial ratios
+with the source values from companies.xlsx.
+
+--------------------------------------------------------------------------------
+Category Definitions
+--------------------------------------------------------------------------------
+1. Data Source Issue
+   - Incorrect or suspicious values in the source file.
+   - Example: TCS ROE = 0.52%
+
+2. Version Difference
+   - Source data and computed values are from different report versions.
+
+3. Formula Discrepancy
+   - Difference caused by different calculation formulas.
+
+================================================================================
+Anomalies
+================================================================================
+
+Company      : TCS
+Year         : 2024
+Ratio        : ROE
+Computed     : 39.41
+Source       : 0.52
+Difference   : 38.89
+Category     : Data Source Issue
+Explanation  : Source ROE appears incorrect. Analytics uses computed ROE.
+--------------------------------------------------------------------------------
+
+Company      : HDFC Bank
+Year         : 2024
+Ratio        : ROCE
+Computed     : 18.64
+Source       : 11.20
+Difference   : 7.44
+Category     : Formula Discrepancy
+Explanation  : Different ROCE calculation methodology.
+--------------------------------------------------------------------------------
+
+Company      : Infosys
+Year         : 2024
+Ratio        : ROE
+Computed     : 31.55
+Source       : 18.40
+Difference   : 13.15
+Category     : Version Difference
+Explanation  : Source values appear to be from a different financial statement.
+--------------------------------------------------------------------------------
+
+End of Log
+================================================================================

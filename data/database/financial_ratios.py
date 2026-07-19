@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS financial_ratios (
     eps_cagr_5yr REAL,
 
     composite_quality_score REAL
+
 );
 """)
 
