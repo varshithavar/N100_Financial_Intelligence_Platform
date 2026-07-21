@@ -1,0 +1,15 @@
+filters:
+
+  roe_min: 15
+
+  debt_equity_max: 1
+
+  pe_max: 20
+
+  fcf_min: 0
+
+  revenue_min: 5000
+
+  net_profit_min: 0
+
+  dividend_yield_min: 1
