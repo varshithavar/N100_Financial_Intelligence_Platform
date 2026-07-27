@@ -209,55 +209,77 @@ def calculate_score(df):
 
 
 # -----------------------------
+# Excel Export with Colour-Coding
+# -----------------------------
+def export_to_excel(results_dict, filters, output_path="output/screener_output.xlsx"):
+    import openpyxl
+    from openpyxl.styles import PatternFill
+
+    green_fill = PatternFill(start_color="C6EFCE", end_color="C6EFCE", fill_type="solid")
+    red_fill = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid")
+
+    with pd.ExcelWriter(output_path, engine="openpyxl") as writer:
+        for preset_name, df in results_dict.items():
+            sheet_name = preset_name[:31]  # Excel sheet name limit
+            df.to_excel(writer, sheet_name=sheet_name, index=False)
+
+    # Re-open with openpyxl to apply colour-coding
+    wb = openpyxl.load_workbook(output_path)
+
+    for preset_name in results_dict:
+        sheet_name = preset_name[:31]
+        ws = wb[sheet_name]
+        df = results_dict[preset_name]
+        headers = [cell.value for cell in ws[1]]
+
+        for row_idx in range(2, ws.max_row + 1):
+            if "roe_min" in filters and "roe" in headers:
+                col = headers.index("roe") + 1
+                cell = ws.cell(row=row_idx, column=col)
+                cell.fill = green_fill if cell.value is not None and cell.value >= filters["roe_min"] else red_fill
+
+            if "debt_equity_max" in filters and "debt_equity" in headers:
+                col = headers.index("debt_equity") + 1
+                cell = ws.cell(row=row_idx, column=col)
+                cell.fill = green_fill if cell.value is not None and cell.value <= filters["debt_equity_max"] else red_fill
+
+    wb.save(output_path)
+    print(f"\nSaved: {output_path}")
+
+
+
+# -----------------------------
 # Main Execution
 # -----------------------------
 if __name__ == "__main__":
 
-
     data = load_financial_data()
-
-
     print("Total companies loaded:", len(data))
 
+    filters = load_config()
 
     presets = {
-
         "Quality Compounder": quality_compounder,
-
         "Value Pick": value_pick,
-
         "Growth Accelerator": growth_accelerator,
-
         "Dividend Champion": dividend_champion,
-
         "Debt-Free Blue Chip": debt_free_blue_chip,
-
         "Turnaround Watch": turnaround_watch
-
     }
 
-
+    results = {}
 
     for name, function in presets.items():
-
         result = function(data)
-
         result = calculate_score(result)
-
-
-        result = result.sort_values(
-            "composite_quality_score",
-            ascending=False
-        )
-
+        result = result.sort_values("composite_quality_score", ascending=False)
 
         print("\n========================")
         print(name)
         print("========================")
-
         print(result)
+        print("Companies found:", len(result))
 
-        print(
-            "Companies found:",
-            len(result)
-        )
+        results[name] = result
+
+    export_to_excel(results, filters)
