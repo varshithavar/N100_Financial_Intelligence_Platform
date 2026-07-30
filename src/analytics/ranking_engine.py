@@ -1,110 +1,91 @@
+"""
+Ranking Engine
+Sprint 3 - Company Ranking
+"""
+
+import sqlite3
 import pandas as pd
-from pathlib import Path
 
 
-BASE_DIR = Path(__file__).resolve().parents[2]
+DB_PATH = "database/nifty100.db"
 
-DATA_PATH = BASE_DIR / "data" / "raw"
 
 
 def load_data():
-    """
-    Load required datasets
-    """
 
-    ratios = pd.read_excel(
-        DATA_PATH / "financial_ratios.xlsx"
+    conn = sqlite3.connect(DB_PATH)
+
+
+    df = pd.read_sql(
+        """
+        SELECT *
+        FROM financial_ratios
+        """,
+        conn
     )
 
-    market_cap = pd.read_excel(
-        DATA_PATH / "market_cap.xlsx"
-    )
 
-    peers = pd.read_excel(
-        DATA_PATH / "peer_groups.xlsx"
-    )
-
-    df = ratios.merge(
-        market_cap,
-        on="company_id"
-    )
-
-    df = df.merge(
-        peers,
-        on="company_id"
-    )
-
-    return df
-
-
-
-def calculate_score(df):
-    """
-    Investment scoring model
-
-    Score components:
-    ROE score     -> 40%
-    PE score      -> 30%
-    Market cap    -> 30%
-    """
-
-    df["roe_score"] = (
-        df["roe"] / df["roe"].max()
-    ) * 40
-
-
-    df["pe_score"] = (
-        1 - (df["pe"] / df["pe"].max())
-    ) * 30
-
-
-    df["market_cap_score"] = (
-        df["market_cap"] / df["market_cap"].max()
-    ) * 30
-
-
-    df["total_score"] = (
-        df["roe_score"]
-        +
-        df["pe_score"]
-        +
-        df["market_cap_score"]
-    )
+    conn.close()
 
     return df
 
 
 
 def rank_companies():
+    """
+    Rank companies based on financial metrics
+    """
 
     df = load_data()
 
-    df = calculate_score(df)
 
-    ranking = df.sort_values(
-        by="total_score",
-        ascending=False
+    metrics = [
+        "return_on_equity_pct",
+        "net_profit_margin_pct",
+        "asset_turnover"
+    ]
+
+
+    for metric in metrics:
+
+        if metric in df.columns:
+
+            df[
+                metric + "_rank"
+            ] = (
+                df[metric]
+                .rank(
+                    ascending=False
+                )
+            )
+
+
+    rank_columns = [
+        "return_on_equity_pct_rank",
+        "net_profit_margin_pct_rank",
+        "asset_turnover_rank"
+    ]
+
+
+    available = [
+        col
+        for col in rank_columns
+        if col in df.columns
+    ]
+
+
+    df["total_score"] = (
+        df[available]
+        .sum(axis=1)
     )
 
-    return ranking[
-        [
-            "company_id",
-            "peer",
-            "roe",
-            "pe",
-            "market_cap",
-            "total_score"
-        ]
-    ]
+
+    return df
 
 
 
 if __name__ == "__main__":
 
-    result = rank_companies()
-
-    print("=" * 60)
-    print("COMPANY RANKING")
-    print("=" * 60)
-
-    print(result)
+    print(
+        rank_companies().head()
+    )

@@ -1,45 +1,122 @@
-import sqlite3
-import pandas as pd
 import streamlit as st
+import plotly.express as px
 
-DB_PATH = "database/nifty100.db"
+from utils.db import (
+    get_companies,
+    get_total_companies,
+    get_ratios
+)
 
+st.set_page_config(
+    page_title="Dashboard Home",
+    page_icon="🏠",
+    layout="wide"
+)
 
-def get_connection():
-    return sqlite3.connect(DB_PATH)
+st.title("🏠 Dashboard Home")
 
+# -----------------------
+# Load Data
+# -----------------------
 
-@st.cache_data(ttl=600)
-def get_companies():
-    conn = get_connection()
-    df = pd.read_sql(
-        "SELECT * FROM companies ORDER BY company_name",
-        conn
+companies = get_companies()
+ratios = get_ratios()
+
+chart_data = companies.merge(ratios, on="company_id", how="left")
+
+# -----------------------
+# KPI Cards
+# -----------------------
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.metric(
+        "Total Companies",
+        get_total_companies()
     )
-    conn.close()
-    return df
 
+with col2:
+    st.metric(
+        "Financial Ratio Records",
+        len(ratios)
+    )
 
-@st.cache_data(ttl=600)
-def get_sector_counts():
-    conn = get_connection()
-    df = pd.read_sql("""
-        SELECT sector,
-               COUNT(*) AS company_count
-        FROM companies
-        GROUP BY sector
-        ORDER BY sector
-    """, conn)
-    conn.close()
-    return df
+with col3:
+    avg_margin = chart_data["net_profit_margin_pct"].mean()
 
+    if avg_margin == avg_margin:
+        st.metric(
+            "Average Net Profit Margin",
+            f"{avg_margin:.2f}%"
+        )
+    else:
+        st.metric(
+            "Average Net Profit Margin",
+            "N/A"
+        )
 
-@st.cache_data(ttl=600)
-def get_total_companies():
-    conn = get_connection()
-    total = pd.read_sql(
-        "SELECT COUNT(*) AS total FROM companies",
-        conn
-    ).iloc[0]["total"]
-    conn.close()
-    return total
+st.divider()
+
+# -----------------------
+# Net Profit Margin Chart
+# -----------------------
+
+st.subheader("📊 Net Profit Margin by Company")
+
+fig = px.bar(
+    chart_data,
+    x="company_name",
+    y="net_profit_margin_pct",
+    text="net_profit_margin_pct",
+    title="Net Profit Margin (%)"
+)
+
+st.plotly_chart(
+    fig,
+    use_container_width=True
+)
+st.divider()
+
+st.subheader("📈 Return on Equity (ROE) by Company")
+
+fig2 = px.bar(
+    chart_data,
+    x="company_name",
+    y="return_on_equity_pct",
+    text="return_on_equity_pct",
+    title="Return on Equity (%)"
+)
+
+st.plotly_chart(
+    fig2,
+    use_container_width=True
+)
+
+st.divider()
+
+# -----------------------
+# Companies Table
+# -----------------------
+
+st.subheader("🏢 Companies")
+
+st.dataframe(
+    companies,
+    use_container_width=True,
+    hide_index=True
+)
+
+st.divider()
+
+# -----------------------
+# Financial Ratios
+# -----------------------
+
+st.subheader("📈 Financial Ratios")
+
+st.dataframe(
+    ratios,
+    use_container_width=True,
+    hide_index=True
+)

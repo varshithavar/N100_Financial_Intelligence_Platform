@@ -1,62 +1,104 @@
+"""
+Peer Analysis Engine
+Sprint 3 - Peer Comparison
+"""
+
+import sqlite3
 import pandas as pd
-from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parents[2]
-DATA_PATH = BASE_DIR / "data" / "raw"
-REPORTS_PATH = BASE_DIR / "reports"
 
-REPORTS_PATH.mkdir(exist_ok=True)
+DB_PATH = "database/nifty100.db"
+
 
 
 def load_data():
-    ratios = pd.read_excel(DATA_PATH / "financial_ratios.xlsx")
-    market_cap = pd.read_excel(DATA_PATH / "market_cap.xlsx")
-    peers = pd.read_excel(DATA_PATH / "peer_groups.xlsx")
+    """
+    Load peer comparison data
+    """
 
-    df = ratios.merge(market_cap, on="company_id")
-    df = df.merge(peers, on="company_id")
+    conn = sqlite3.connect(DB_PATH)
+
+
+    df = pd.read_sql(
+        """
+        SELECT
+            c.company_id,
+            c.symbol,
+            c.company_name,
+            c.sector,
+
+            r.*
+
+        FROM companies c
+
+        JOIN financial_ratios r
+
+        ON c.company_id = r.company_id
+        """,
+        conn
+    )
+
+
+    conn.close()
+
+
+    # Create peer group column
+    df["peer"] = (
+        df["sector"]
+        .fillna("Unknown")
+    )
+
 
     return df
 
 
-def generate_report(df):
-    report = pd.DataFrame({
-        "Company": df["peer"],
-        "ROE": df["roe"],
-        "PE": df["pe"],
-        "Market Cap": df["market_cap"]
-    })
 
-    report["Investment Score"] = (
-        report["ROE"] * 2
-        - report["PE"] * 0.5
-        + report["Market Cap"] / 100000
+def peer_percentile(df, metric):
+
+    df[
+        metric + "_percentile"
+    ] = (
+        df[metric]
+        .rank(
+            pct=True
+        )
+        *
+        100
     )
 
-    report = report.sort_values(
-        by="Investment Score",
-        ascending=False
-    )
-
-    return report
+    return df
 
 
-def save_report(report):
-    output_file = REPORTS_PATH / "investment_report.csv"
-    report.to_csv(output_file, index=False)
 
-    print(f"\nReport saved successfully:")
-    print(output_file)
+def create_peer_comparison():
+
+    df = load_data()
+
+
+    metrics = [
+        "return_on_equity_pct",
+        "net_profit_margin_pct",
+        "debt_to_equity",
+        "asset_turnover"
+    ]
+
+
+    for metric in metrics:
+
+        if metric in df.columns:
+
+            df = peer_percentile(
+                df,
+                metric
+            )
+
+
+    return df
+
 
 
 if __name__ == "__main__":
-    df = load_data()
 
-    report = generate_report(df)
-
-    print("=" * 60)
-    print("INVESTMENT REPORT")
-    print("=" * 60)
-    print(report)
-
-    save_report(report)
+    print(
+        load_data().head()
+    )
