@@ -1,0 +1,10 @@
+company_id,company_name,type,rule_id,text,confidence_pct
+1,TCS,pro,2,Positive free cash flow indicates healthy cash generation.,85
+1,TCS,pro,6,Low P/E ratio may indicate attractive valuation.,82
+1,TCS,pro,8,Low total debt improves financial stability.,86
+2,Infosys,pro,2,Positive free cash flow indicates healthy cash generation.,85
+2,Infosys,pro,7,Strong operating cash flow supports sustainable growth.,88
+3,Reliance,pro,1,High return on equity demonstrates strong capital efficiency.,90
+3,Reliance,pro,2,Positive free cash flow indicates healthy cash generation.,85
+3,Reliance,pro,4,High profit margin shows strong operational efficiency.,88
+3,Reliance,pro,7,Strong operating cash flow supports sustainable growth.,88
