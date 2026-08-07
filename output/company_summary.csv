@@ -1,4 +1,110 @@
-company_id,company_name,total_pros,total_cons
-1,TCS,3,0
-2,Infosys,2,0
-3,Reliance,4,0
+company_id,company_name,con,pro
+1,Abbott India Ltd,1,1
+2,Adani Energy Solutions Ltd,1,1
+3,Adani Enterprises Ltd,1,1
+4,Adani Green Energy Ltd,1,1
+5,"Adani Ports & Special Economic Zone Ltd
+",1,1
+6,Adani Power Ltd,1,1
+7,Ambuja Cements Ltd,1,1
+8,"Apollo Hospitals
+Chain of Indian private hospitals",1,1
+9,"Asian Paints
+Indian Multi-National Paint and Coating Manufacturing Company",1,1
+10,Adani Total Gas Ltd,1,1
+11,Axis Bank Ltd,1,1
+12,Bajaj Auto Ltd,1,1
+13,Bajaj Finserv Ltd,1,1
+14,Bajaj Holdings & Investment Ltd,1,1
+15,Bajaj Finance Ltd,1,1
+16,Bank of Baroda,1,1
+17,Bharat Electronics Ltd,1,1
+18,Bharti Airtel Ltd,1,1
+19,"Bharat Heavy Electricals Limited
+",1,1
+20,Bosch Ltd,1,1
+21,Bharat Petroleum Corporation Ltd,1,1
+22,Britannia Industries Ltd,1,1
+23,Canara Bank,1,1
+24,Cholamandalam Investment & Finance Company Ltd,1,1
+25,"Cipla Ltd
+",1,1
+26,Coal India Ltd,1,1
+27,Dabur India Ltd,1,1
+28,Divis Laboratories Ltd,1,1
+29,DLF Ltd,1,1
+30,Avenue Supermarts Ltd,1,1
+31,Dr Reddys Laboratories Ltd,1,1
+32,Eicher Motors Ltd,1,1
+33,GAIL (India) Ltd,1,1
+34,Godrej Consumer Products Ltd,1,1
+35,Grasim Industries Ltd,1,1
+36,Hindustan Aeronautics Ltd,1,1
+37,Havells India Ltd,1,1
+38,HCL Technologies Ltd,1,1
+39,HDFC Bank Ltd,1,1
+40,HDFC Life Insurance Company Ltd,1,1
+41,"Hero MotoCorp Ltd
+",1,1
+42,Hindalco Industries Ltd,1,1
+43,"Hindustan Unilever Ltd
+",1,1
+44,ICICI Bank Ltd,1,1
+45,ICICI Lombard General Insurance Company Ltd,1,1
+46,ICICI Prudential Life Insurance Company Ltd,1,1
+47,Interglobe Aviation Ltd,1,1
+48,IndusInd Bank Ltd,1,1
+49,Infosys Ltd,1,1
+50,"Indian Oil Corporation
+",1,1
+51,Indian Railway Catering & Tourism Corporation Ltd,1,1
+52,Indian Railway Finance Corporation Ltd,1,1
+53,"ITC Ltd
+",1,1
+54,Jindal Steel & Power Ltd,1,1
+55,Jio Financial Services Ltd,1,1
+56,JSW Energy Ltd,1,1
+57,JSW Steel Ltd,1,1
+58,"Kotak Mahindra Bank Ltd
+",1,1
+59,Life Insurance Corporation of India,1,1
+60,Macrotech Developers Ltd,1,1
+61,Larsen & Toubro Ltd,1,1
+62,LTIMindtree Ltd,1,1
+63,"Mahindra & Mahindra Ltd
+",1,1
+64,Maruti Suzuki India Ltd,1,1
+65,Samvardhana Motherson International Ltd,1,1
+66,Info Edge (India) Ltd,1,1
+67,Nestle India Ltd,1,1
+68,"NHPC Ltd
+",1,1
+69,NTPC Ltd,1,1
+70,Oil & Natural Gas Corpn Ltd,1,1
+71,Power Finance Corporation Ltd,1,1
+72,Pidilite Industries Ltd,1,1
+73,Punjab National Bank,1,1
+74,Power Grid Corporation of India Ltd,1,1
+75,REC Ltd,1,1
+76,"Reliance Industries Ltd
+",1,1
+77,SBI Life Insurance Company Ltd,1,1
+78,State Bank of India,1,1
+79,Shree Cement Ltd,1,1
+80,"Shriram Finance Ltd
+",1,1
+81,Siemens Ltd,1,1
+82,Sun Pharmaceuticals Industries Ltd,1,1
+83,Tata Consumer Products Ltd,1,1
+84,Tata Motors Ltd,1,1
+85,"Tata Power Company Ltd
+",1,1
+86,"Tata Steel Ltd
+",1,1
+87,Tata Consultancy Services Ltd,1,1
+88,Tech Mahindra Ltd,1,1
+89,"Titan Company Ltd
+",1,1
+90,Torrent Pharmaceuticals Ltd,1,1
+91,Trent Ltd,1,1
+92,TVS Motor Company Ltd,1,1

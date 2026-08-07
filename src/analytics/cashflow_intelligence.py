@@ -14,7 +14,7 @@ DB_FILE = PROJECT_ROOT / "database" / "nifty100.db"
 OUTPUT_DIR = PROJECT_ROOT / "output"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
-OUTPUT_FILE = OUTPUT_DIR / "capital_allocation.csv"
+OUTPUT_FILE = OUTPUT_DIR / "cashflow_intelligence.xlsx"
 
 
 # -------------------------------------------------
@@ -50,7 +50,21 @@ df = pd.read_sql(query, conn)
 print("\nCash Flow Data Loaded")
 print(df.head())
 
+
+
+# -------------------------------------------------
+# Remove Duplicate Companies
+# Keep Latest Financial Record
+# -------------------------------------------------
+
+df = df.drop_duplicates(
+    subset=["company_id"],
+    keep="last"
+)
+
+
 print("\nTotal Companies:", len(df))
+
 
 
 # -------------------------------------------------
@@ -74,25 +88,29 @@ for _, row in df.iterrows():
 
 
     # -----------------------------
-    # CFO Quality Classification
+    # CFO Quality
     # -----------------------------
 
     if pd.isna(cfo):
+
         cfo_quality = "Unknown"
 
     elif cfo >= 1000:
+
         cfo_quality = "Strong"
 
     elif cfo >= 500:
+
         cfo_quality = "Moderate"
 
     else:
+
         cfo_quality = "Weak"
 
 
 
     # -----------------------------
-    # Free Cash Flow Status
+    # FCF Status
     # -----------------------------
 
     if pd.isna(fcf):
@@ -106,6 +124,33 @@ for _, row in df.iterrows():
     else:
 
         fcf_status = "Negative"
+
+
+
+    # -----------------------------
+    # CapEx Intensity
+    # -----------------------------
+
+    if pd.isna(cfo) or pd.isna(fcf):
+
+        capex_intensity = "Unknown"
+
+    else:
+
+        capex_value = cfo - fcf
+
+
+        if capex_value < 500:
+
+            capex_intensity = "Low"
+
+        elif capex_value < 2000:
+
+            capex_intensity = "Medium"
+
+        else:
+
+            capex_intensity = "High"
 
 
 
@@ -138,25 +183,59 @@ for _, row in df.iterrows():
 
 
     # -----------------------------
+    # Distress Flag
+    # -----------------------------
+
+    if (
+        (pd.notna(fcf) and fcf < 0)
+        or
+        (pd.notna(debt) and debt > 5000)
+        or
+        cfo_quality == "Weak"
+    ):
+
+        distress_flag = "YES"
+
+    else:
+
+        distress_flag = "NO"
+
+
+
+    # -----------------------------
     # Confidence Score
     # -----------------------------
 
     confidence = 85
 
 
+
     results.append({
 
         "company_id": company_id,
+
         "company_name": company_name,
+
         "cash_from_operations": cfo,
+
         "free_cash_flow": fcf,
+
         "total_debt": debt,
+
         "cfo_quality": cfo_quality,
+
         "fcf_status": fcf_status,
+
+        "capex_intensity": capex_intensity,
+
         "capital_allocation_pattern": capital_pattern,
+
+        "distress_flag": distress_flag,
+
         "confidence_pct": confidence
 
     })
+
 
 
 # -------------------------------------------------
@@ -166,16 +245,19 @@ for _, row in df.iterrows():
 cashflow_df = pd.DataFrame(results)
 
 
-print("\nCash Flow Intelligence Result:")
-print(cashflow_df)
+print("\nCash Flow Intelligence Result")
+
+print(cashflow_df.head())
+
+print("\nRows Generated:", len(cashflow_df))
 
 
 
 # -------------------------------------------------
-# Save Output
+# Save Excel Output
 # -------------------------------------------------
 
-cashflow_df.to_csv(
+cashflow_df.to_excel(
     OUTPUT_FILE,
     index=False
 )
@@ -184,6 +266,7 @@ cashflow_df.to_csv(
 print("\nCash Flow Intelligence Generated Successfully!")
 
 print("Output File:")
+
 print(OUTPUT_FILE)
 
 
@@ -194,4 +277,4 @@ print(OUTPUT_FILE)
 
 conn.close()
 
-print("\nDatabase connection closed.")
+print("\nDatabase connection closed!")

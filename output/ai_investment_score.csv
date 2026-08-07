@@ -1,0 +1,110 @@
+company_id,company_name,con,pro,nlp_confidence,ai_score,ai_rating
+1,Abbott India Ltd,1,1,75.0,20,Weak
+2,Adani Energy Solutions Ltd,1,1,72.5,0,Weak
+3,Adani Enterprises Ltd,1,1,65.0,0,Weak
+4,Adani Green Energy Ltd,1,1,75.0,20,Weak
+5,"Adani Ports & Special Economic Zone Ltd
+",1,1,75.0,20,Weak
+6,Adani Power Ltd,1,1,75.0,20,Weak
+7,Ambuja Cements Ltd,1,1,65.0,0,Weak
+8,"Apollo Hospitals
+Chain of Indian private hospitals",1,1,65.0,0,Weak
+9,"Asian Paints
+Indian Multi-National Paint and Coating Manufacturing Company",1,1,65.0,0,Weak
+10,Adani Total Gas Ltd,1,1,65.0,0,Weak
+11,Axis Bank Ltd,1,1,75.0,20,Weak
+12,Bajaj Auto Ltd,1,1,75.0,20,Weak
+13,Bajaj Finserv Ltd,1,1,65.0,0,Weak
+14,Bajaj Holdings & Investment Ltd,1,1,75.0,20,Weak
+15,Bajaj Finance Ltd,1,1,75.0,20,Weak
+16,Bank of Baroda,1,1,75.0,20,Weak
+17,Bharat Electronics Ltd,1,1,75.0,20,Weak
+18,Bharti Airtel Ltd,1,1,65.0,0,Weak
+19,"Bharat Heavy Electricals Limited
+",1,1,72.5,0,Weak
+20,Bosch Ltd,1,1,65.0,0,Weak
+21,Bharat Petroleum Corporation Ltd,1,1,72.5,0,Weak
+22,Britannia Industries Ltd,1,1,65.0,0,Weak
+23,Canara Bank,1,1,65.0,0,Weak
+24,Cholamandalam Investment & Finance Company Ltd,1,1,75.0,20,Weak
+25,"Cipla Ltd
+",1,1,75.0,20,Weak
+26,Coal India Ltd,1,1,75.0,20,Weak
+27,Dabur India Ltd,1,1,65.0,0,Weak
+28,Divis Laboratories Ltd,1,1,75.0,20,Weak
+29,DLF Ltd,1,1,75.0,20,Weak
+30,Avenue Supermarts Ltd,1,1,72.5,0,Weak
+31,Dr Reddys Laboratories Ltd,1,1,75.0,20,Weak
+32,Eicher Motors Ltd,1,1,75.0,20,Weak
+33,GAIL (India) Ltd,1,1,65.0,0,Weak
+34,Godrej Consumer Products Ltd,1,1,72.5,0,Weak
+35,Grasim Industries Ltd,1,1,65.0,0,Weak
+36,Hindustan Aeronautics Ltd,1,1,75.0,20,Weak
+37,Havells India Ltd,1,1,65.0,0,Weak
+38,HCL Technologies Ltd,1,1,65.0,0,Weak
+39,HDFC Bank Ltd,1,1,75.0,20,Weak
+40,HDFC Life Insurance Company Ltd,1,1,72.5,0,Weak
+41,"Hero MotoCorp Ltd
+",1,1,65.0,0,Weak
+42,Hindalco Industries Ltd,1,1,65.0,0,Weak
+43,"Hindustan Unilever Ltd
+",1,1,75.0,20,Weak
+44,ICICI Bank Ltd,1,1,75.0,20,Weak
+45,ICICI Lombard General Insurance Company Ltd,1,1,65.0,0,Weak
+46,ICICI Prudential Life Insurance Company Ltd,1,1,72.5,0,Weak
+47,Interglobe Aviation Ltd,1,1,65.0,0,Weak
+48,IndusInd Bank Ltd,1,1,75.0,20,Weak
+49,Infosys Ltd,1,1,75.0,20,Weak
+50,"Indian Oil Corporation
+",1,1,72.5,0,Weak
+51,Indian Railway Catering & Tourism Corporation Ltd,1,1,75.0,20,Weak
+52,Indian Railway Finance Corporation Ltd,1,1,75.0,20,Weak
+53,"ITC Ltd
+",1,1,75.0,20,Weak
+54,Jindal Steel & Power Ltd,1,1,65.0,0,Weak
+55,Jio Financial Services Ltd,1,1,75.0,20,Weak
+56,JSW Energy Ltd,1,1,75.0,20,Weak
+57,JSW Steel Ltd,1,1,72.5,0,Weak
+58,"Kotak Mahindra Bank Ltd
+",1,1,75.0,20,Weak
+59,Life Insurance Corporation of India,1,1,72.5,0,Weak
+60,Macrotech Developers Ltd,1,1,75.0,20,Weak
+61,Larsen & Toubro Ltd,1,1,65.0,0,Weak
+62,LTIMindtree Ltd,1,1,65.0,0,Weak
+63,"Mahindra & Mahindra Ltd
+",1,1,65.0,0,Weak
+64,Maruti Suzuki India Ltd,1,1,65.0,0,Weak
+65,Samvardhana Motherson International Ltd,1,1,72.5,0,Weak
+66,Info Edge (India) Ltd,1,1,75.0,20,Weak
+67,Nestle India Ltd,1,1,75.0,20,Weak
+68,"NHPC Ltd
+",1,1,75.0,20,Weak
+69,NTPC Ltd,1,1,65.0,0,Weak
+70,Oil & Natural Gas Corpn Ltd,1,1,65.0,0,Weak
+71,Power Finance Corporation Ltd,1,1,75.0,20,Weak
+72,Pidilite Industries Ltd,1,1,75.0,20,Weak
+73,Punjab National Bank,1,1,65.0,0,Weak
+74,Power Grid Corporation of India Ltd,1,1,75.0,20,Weak
+75,REC Ltd,1,1,75.0,20,Weak
+76,"Reliance Industries Ltd
+",1,1,65.0,0,Weak
+77,SBI Life Insurance Company Ltd,1,1,72.5,0,Weak
+78,State Bank of India,1,1,75.0,20,Weak
+79,Shree Cement Ltd,1,1,65.0,0,Weak
+80,"Shriram Finance Ltd
+",1,1,75.0,20,Weak
+81,Siemens Ltd,1,1,65.0,0,Weak
+82,Sun Pharmaceuticals Industries Ltd,1,1,75.0,20,Weak
+83,Tata Consumer Products Ltd,1,1,65.0,0,Weak
+84,Tata Motors Ltd,1,1,65.0,0,Weak
+85,"Tata Power Company Ltd
+",1,1,65.0,0,Weak
+86,"Tata Steel Ltd
+",1,1,72.5,0,Weak
+87,Tata Consultancy Services Ltd,1,1,75.0,20,Weak
+88,Tech Mahindra Ltd,1,1,65.0,0,Weak
+89,"Titan Company Ltd
+",1,1,65.0,0,Weak
+90,Torrent Pharmaceuticals Ltd,1,1,75.0,20,Weak
+91,Trent Ltd,1,1,65.0,0,Weak
+92,TVS Motor Company Ltd,1,1,72.5,0,Weak

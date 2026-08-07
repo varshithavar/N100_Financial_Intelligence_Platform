@@ -30,6 +30,8 @@ CASHFLOW_FILE = PROJECT_ROOT / "output" / "capital_allocation.csv"
 
 VALUATION_FILE = PROJECT_ROOT / "output" / "valuation_summary.xlsx"
 
+AI_SCORE_FILE = PROJECT_ROOT / "output" / "ai_investment_score.csv"
+
 
 # -------------------------------------------------
 # Database Connection
@@ -46,14 +48,14 @@ print("Database connected successfully!")
 
 query = """
 SELECT
-    c.company_id,
-    c.company_name,
-    f.financial_year,
-    f.net_profit_margin_pct,
-    f.return_on_equity_pct,
-    f.debt_to_equity,
-    f.free_cash_flow,
-    f.cash_from_operations
+c.company_id,
+c.company_name,
+f.financial_year,
+f.net_profit_margin_pct,
+f.return_on_equity_pct,
+f.debt_to_equity,
+f.free_cash_flow,
+f.cash_from_operations
 FROM financial_ratios f
 JOIN companies c
 ON f.company_id = c.company_id
@@ -62,6 +64,17 @@ ORDER BY c.company_id;
 
 
 financial_df = pd.read_sql(query, conn)
+
+
+# Clean company names
+
+financial_df["company_name"] = (
+    financial_df["company_name"]
+    .astype(str)
+    .str.replace("\n", " ", regex=False)
+    .str.replace("\r", " ", regex=False)
+    .str.strip()
+)
 
 
 print("\nFinancial Data Loaded")
@@ -113,16 +126,45 @@ else:
 
 
 # -------------------------------------------------
+# Load AI Investment Score
+# -------------------------------------------------
+
+if AI_SCORE_FILE.exists():
+
+    ai_df = pd.read_csv(
+        AI_SCORE_FILE
+    )
+
+else:
+
+    ai_df = pd.DataFrame()
+
+
+
+# -------------------------------------------------
 # Create PDF Function
 # -------------------------------------------------
 
 def create_pdf(company_id, company_name):
 
-    pdf_file = REPORT_DIR / f"{company_name}_tearsheet.pdf"
+
+    clean_name = (
+        str(company_name)
+        .replace("\n", " ")
+        .replace("\r", " ")
+        .replace("/", "-")
+        .replace("\\", "-")
+        .strip()
+    )
+
+
+    pdf_file = REPORT_DIR / f"{clean_name}_tearsheet.pdf"
+
 
     doc = SimpleDocTemplate(
         str(pdf_file)
     )
+
 
     styles = getSampleStyleSheet()
 
@@ -133,10 +175,109 @@ def create_pdf(company_id, company_name):
 
     content.append(
         Paragraph(
-            f"{company_name} Financial Intelligence Report",
+            f"{clean_name} Financial Intelligence Report",
             styles["Title"]
         )
     )
+
+
+    content.append(
+        Spacer(1,20)
+    )
+    content.append(
+        Spacer(1,20)
+    )
+
+
+    # -------------------------------------------------
+    # AI Investment Intelligence
+    # -------------------------------------------------
+
+    content.append(
+        Paragraph(
+            "AI Investment Intelligence",
+            styles["Heading2"]
+        )
+    )
+
+
+    if not ai_df.empty:
+
+
+        ai_data = ai_df[
+            ai_df["company_id"] == company_id
+        ]
+
+
+        if not ai_data.empty:
+
+
+            ai = ai_data.iloc[0]
+
+
+            ai_table = [
+
+                ["Metric", "Value"],
+
+                [
+                    "AI Score",
+                    str(ai["ai_score"])
+                ],
+
+                [
+                    "AI Rating",
+                    str(ai["ai_rating"])
+                ],
+
+                [
+                    "NLP Confidence",
+                    f"{ai['nlp_confidence']}%"
+                ],
+
+                [
+                    "Positive Factors",
+                    str(ai["pro"])
+                ],
+
+                [
+                    "Risk Factors",
+                    str(ai["con"])
+                ]
+
+            ]
+
+
+            table = Table(ai_table)
+
+
+            table.setStyle(
+                TableStyle(
+                    [
+                        (
+                            "GRID",
+                            (0,0),
+                            (-1,-1),
+                            1,
+                            None
+                        )
+                    ]
+                )
+            )
+
+
+            content.append(table)
+
+
+    else:
+
+        content.append(
+            Paragraph(
+                "No AI score available.",
+                styles["BodyText"]
+            )
+        )
+
+
 
     content.append(
         Spacer(1,20)
@@ -153,6 +294,7 @@ def create_pdf(company_id, company_name):
 
 
     if not company_data.empty:
+
 
         latest = company_data.iloc[-1]
 
@@ -189,9 +331,7 @@ def create_pdf(company_id, company_name):
         ]
 
 
-        table = Table(
-            financial_table
-        )
+        table = Table(financial_table)
 
 
         table.setStyle(
@@ -220,6 +360,7 @@ def create_pdf(company_id, company_name):
         content.append(table)
 
 
+
     content.append(
         Spacer(1,20)
     )
@@ -227,7 +368,7 @@ def create_pdf(company_id, company_name):
 
 
     # -------------------------------------------------
-    # Pros & Cons Section
+    # Pros & Cons
     # -------------------------------------------------
 
     content.append(
@@ -240,12 +381,14 @@ def create_pdf(company_id, company_name):
 
     if not pros_df.empty:
 
+
         company_pros = pros_df[
             pros_df["company_id"] == company_id
         ]
 
 
         for _, row in company_pros.iterrows():
+
 
             text = (
                 f"{row['type'].upper()} : "
@@ -379,4 +522,6 @@ for _, company in companies.iterrows():
 conn.close()
 
 
-print("\nAll Company Tearsheet PDFs Generated Successfully!")
+print(
+    "\nAll Company Tearsheet PDFs Generated Successfully!"
+)

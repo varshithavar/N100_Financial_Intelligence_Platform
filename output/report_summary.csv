@@ -1,6 +1,11 @@
 report_name,report_type,status,file_size_bytes,generated_date
-TCS_tearsheet.pdf,Company Report,VALID,2261,2026-08-03 18:48:10
-Infosys_tearsheet.pdf,Company Report,VALID,2228,2026-08-03 18:48:10
-Reliance_tearsheet.pdf,Company Report,VALID,2314,2026-08-03 18:48:10
-Energy_sector_report.pdf,Sector Report,VALID,2003,2026-08-03 18:48:10
-IT_sector_report.pdf,Sector Report,VALID,2013,2026-08-03 18:48:10
+TCS_tearsheet.pdf,Company Report,VALID,2261,2026-08-07 21:52:02
+Infosys_tearsheet.pdf,Company Report,VALID,2228,2026-08-07 21:52:02
+Reliance_tearsheet.pdf,Company Report,VALID,2314,2026-08-07 21:52:02
+Automobile_sector_report.pdf,Sector Report,VALID,5063,2026-08-07 21:52:02
+Banking_sector_report.pdf,Sector Report,VALID,5820,2026-08-07 21:52:02
+Consumer_sector_report.pdf,Sector Report,VALID,8070,2026-08-07 21:52:02
+Energy_sector_report.pdf,Sector Report,VALID,9377,2026-08-07 21:52:02
+Finance_sector_report.pdf,Sector Report,VALID,4383,2026-08-07 21:52:02
+Healthcare_sector_report.pdf,Sector Report,VALID,3712,2026-08-07 21:52:02
+IT_sector_report.pdf,Sector Report,VALID,3572,2026-08-07 21:52:02

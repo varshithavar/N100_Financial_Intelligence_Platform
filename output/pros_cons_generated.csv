@@ -1,10 +1,219 @@
 company_id,company_name,type,rule_id,text,confidence_pct
-1,TCS,pro,2,Positive free cash flow indicates healthy cash generation.,85
-1,TCS,pro,6,Low P/E ratio may indicate attractive valuation.,82
-1,TCS,pro,8,Low total debt improves financial stability.,86
-2,Infosys,pro,2,Positive free cash flow indicates healthy cash generation.,85
-2,Infosys,pro,7,Strong operating cash flow supports sustainable growth.,88
-3,Reliance,pro,1,High return on equity demonstrates strong capital efficiency.,90
-3,Reliance,pro,2,Positive free cash flow indicates healthy cash generation.,85
-3,Reliance,pro,4,High profit margin shows strong operational efficiency.,88
-3,Reliance,pro,7,Strong operating cash flow supports sustainable growth.,88
+1,Abbott India Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+1,Abbott India Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+2,Adani Energy Solutions Ltd,pro,99,Stable financial indicators based on available metrics.,65
+2,Adani Energy Solutions Ltd,con,12,Low profit margin indicates operational pressure.,80
+3,Adani Enterprises Ltd,pro,99,Stable financial indicators based on available metrics.,65
+3,Adani Enterprises Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+4,Adani Green Energy Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+4,Adani Green Energy Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+5,"Adani Ports & Special Economic Zone Ltd
+",pro,4,Strong profit margin indicates operational efficiency.,85
+5,"Adani Ports & Special Economic Zone Ltd
+",con,99,No major negative signal detected; continuous monitoring recommended.,65
+6,Adani Power Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+6,Adani Power Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+7,Ambuja Cements Ltd,pro,99,Stable financial indicators based on available metrics.,65
+7,Ambuja Cements Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+8,"Apollo Hospitals
+Chain of Indian private hospitals",pro,99,Stable financial indicators based on available metrics.,65
+8,"Apollo Hospitals
+Chain of Indian private hospitals",con,99,No major negative signal detected; continuous monitoring recommended.,65
+9,"Asian Paints
+Indian Multi-National Paint and Coating Manufacturing Company",pro,99,Stable financial indicators based on available metrics.,65
+9,"Asian Paints
+Indian Multi-National Paint and Coating Manufacturing Company",con,99,No major negative signal detected; continuous monitoring recommended.,65
+10,Adani Total Gas Ltd,pro,99,Stable financial indicators based on available metrics.,65
+10,Adani Total Gas Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+11,Axis Bank Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+11,Axis Bank Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+12,Bajaj Auto Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+12,Bajaj Auto Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+13,Bajaj Finserv Ltd,pro,99,Stable financial indicators based on available metrics.,65
+13,Bajaj Finserv Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+14,Bajaj Holdings & Investment Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+14,Bajaj Holdings & Investment Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+15,Bajaj Finance Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+15,Bajaj Finance Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+16,Bank of Baroda,pro,4,Strong profit margin indicates operational efficiency.,85
+16,Bank of Baroda,con,99,No major negative signal detected; continuous monitoring recommended.,65
+17,Bharat Electronics Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+17,Bharat Electronics Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+18,Bharti Airtel Ltd,pro,99,Stable financial indicators based on available metrics.,65
+18,Bharti Airtel Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+19,"Bharat Heavy Electricals Limited
+",pro,99,Stable financial indicators based on available metrics.,65
+19,"Bharat Heavy Electricals Limited
+",con,12,Low profit margin indicates operational pressure.,80
+20,Bosch Ltd,pro,99,Stable financial indicators based on available metrics.,65
+20,Bosch Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+21,Bharat Petroleum Corporation Ltd,pro,99,Stable financial indicators based on available metrics.,65
+21,Bharat Petroleum Corporation Ltd,con,12,Low profit margin indicates operational pressure.,80
+22,Britannia Industries Ltd,pro,99,Stable financial indicators based on available metrics.,65
+22,Britannia Industries Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+23,Canara Bank,pro,99,Stable financial indicators based on available metrics.,65
+23,Canara Bank,con,99,No major negative signal detected; continuous monitoring recommended.,65
+24,Cholamandalam Investment & Finance Company Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+24,Cholamandalam Investment & Finance Company Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+25,"Cipla Ltd
+",pro,4,Strong profit margin indicates operational efficiency.,85
+25,"Cipla Ltd
+",con,99,No major negative signal detected; continuous monitoring recommended.,65
+26,Coal India Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+26,Coal India Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+27,Dabur India Ltd,pro,99,Stable financial indicators based on available metrics.,65
+27,Dabur India Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+28,Divis Laboratories Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+28,Divis Laboratories Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+29,DLF Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+29,DLF Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+30,Avenue Supermarts Ltd,pro,99,Stable financial indicators based on available metrics.,65
+30,Avenue Supermarts Ltd,con,12,Low profit margin indicates operational pressure.,80
+31,Dr Reddys Laboratories Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+31,Dr Reddys Laboratories Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+32,Eicher Motors Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+32,Eicher Motors Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+33,GAIL (India) Ltd,pro,99,Stable financial indicators based on available metrics.,65
+33,GAIL (India) Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+34,Godrej Consumer Products Ltd,pro,99,Stable financial indicators based on available metrics.,65
+34,Godrej Consumer Products Ltd,con,12,Low profit margin indicates operational pressure.,80
+35,Grasim Industries Ltd,pro,99,Stable financial indicators based on available metrics.,65
+35,Grasim Industries Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+36,Hindustan Aeronautics Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+36,Hindustan Aeronautics Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+37,Havells India Ltd,pro,99,Stable financial indicators based on available metrics.,65
+37,Havells India Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+38,HCL Technologies Ltd,pro,99,Stable financial indicators based on available metrics.,65
+38,HCL Technologies Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+39,HDFC Bank Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+39,HDFC Bank Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+40,HDFC Life Insurance Company Ltd,pro,99,Stable financial indicators based on available metrics.,65
+40,HDFC Life Insurance Company Ltd,con,12,Low profit margin indicates operational pressure.,80
+41,"Hero MotoCorp Ltd
+",pro,99,Stable financial indicators based on available metrics.,65
+41,"Hero MotoCorp Ltd
+",con,99,No major negative signal detected; continuous monitoring recommended.,65
+42,Hindalco Industries Ltd,pro,99,Stable financial indicators based on available metrics.,65
+42,Hindalco Industries Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+43,"Hindustan Unilever Ltd
+",pro,4,Strong profit margin indicates operational efficiency.,85
+43,"Hindustan Unilever Ltd
+",con,99,No major negative signal detected; continuous monitoring recommended.,65
+44,ICICI Bank Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+44,ICICI Bank Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+45,ICICI Lombard General Insurance Company Ltd,pro,99,Stable financial indicators based on available metrics.,65
+45,ICICI Lombard General Insurance Company Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+46,ICICI Prudential Life Insurance Company Ltd,pro,99,Stable financial indicators based on available metrics.,65
+46,ICICI Prudential Life Insurance Company Ltd,con,12,Low profit margin indicates operational pressure.,80
+47,Interglobe Aviation Ltd,pro,99,Stable financial indicators based on available metrics.,65
+47,Interglobe Aviation Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+48,IndusInd Bank Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+48,IndusInd Bank Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+49,Infosys Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+49,Infosys Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+50,"Indian Oil Corporation
+",pro,99,Stable financial indicators based on available metrics.,65
+50,"Indian Oil Corporation
+",con,12,Low profit margin indicates operational pressure.,80
+51,Indian Railway Catering & Tourism Corporation Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+51,Indian Railway Catering & Tourism Corporation Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+52,Indian Railway Finance Corporation Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+52,Indian Railway Finance Corporation Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+53,"ITC Ltd
+",pro,4,Strong profit margin indicates operational efficiency.,85
+53,"ITC Ltd
+",con,99,No major negative signal detected; continuous monitoring recommended.,65
+54,Jindal Steel & Power Ltd,pro,99,Stable financial indicators based on available metrics.,65
+54,Jindal Steel & Power Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+55,Jio Financial Services Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+55,Jio Financial Services Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+56,JSW Energy Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+56,JSW Energy Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+57,JSW Steel Ltd,pro,99,Stable financial indicators based on available metrics.,65
+57,JSW Steel Ltd,con,12,Low profit margin indicates operational pressure.,80
+58,"Kotak Mahindra Bank Ltd
+",pro,4,Strong profit margin indicates operational efficiency.,85
+58,"Kotak Mahindra Bank Ltd
+",con,99,No major negative signal detected; continuous monitoring recommended.,65
+59,Life Insurance Corporation of India,pro,99,Stable financial indicators based on available metrics.,65
+59,Life Insurance Corporation of India,con,12,Low profit margin indicates operational pressure.,80
+60,Macrotech Developers Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+60,Macrotech Developers Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+61,Larsen & Toubro Ltd,pro,99,Stable financial indicators based on available metrics.,65
+61,Larsen & Toubro Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+62,LTIMindtree Ltd,pro,99,Stable financial indicators based on available metrics.,65
+62,LTIMindtree Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+63,"Mahindra & Mahindra Ltd
+",pro,99,Stable financial indicators based on available metrics.,65
+63,"Mahindra & Mahindra Ltd
+",con,99,No major negative signal detected; continuous monitoring recommended.,65
+64,Maruti Suzuki India Ltd,pro,99,Stable financial indicators based on available metrics.,65
+64,Maruti Suzuki India Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+65,Samvardhana Motherson International Ltd,pro,99,Stable financial indicators based on available metrics.,65
+65,Samvardhana Motherson International Ltd,con,12,Low profit margin indicates operational pressure.,80
+66,Info Edge (India) Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+66,Info Edge (India) Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+67,Nestle India Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+67,Nestle India Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+68,"NHPC Ltd
+",pro,4,Strong profit margin indicates operational efficiency.,85
+68,"NHPC Ltd
+",con,99,No major negative signal detected; continuous monitoring recommended.,65
+69,NTPC Ltd,pro,99,Stable financial indicators based on available metrics.,65
+69,NTPC Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+70,Oil & Natural Gas Corpn Ltd,pro,99,Stable financial indicators based on available metrics.,65
+70,Oil & Natural Gas Corpn Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+71,Power Finance Corporation Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+71,Power Finance Corporation Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+72,Pidilite Industries Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+72,Pidilite Industries Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+73,Punjab National Bank,pro,99,Stable financial indicators based on available metrics.,65
+73,Punjab National Bank,con,99,No major negative signal detected; continuous monitoring recommended.,65
+74,Power Grid Corporation of India Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+74,Power Grid Corporation of India Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+75,REC Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+75,REC Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+76,"Reliance Industries Ltd
+",pro,99,Stable financial indicators based on available metrics.,65
+76,"Reliance Industries Ltd
+",con,99,No major negative signal detected; continuous monitoring recommended.,65
+77,SBI Life Insurance Company Ltd,pro,99,Stable financial indicators based on available metrics.,65
+77,SBI Life Insurance Company Ltd,con,12,Low profit margin indicates operational pressure.,80
+78,State Bank of India,pro,4,Strong profit margin indicates operational efficiency.,85
+78,State Bank of India,con,99,No major negative signal detected; continuous monitoring recommended.,65
+79,Shree Cement Ltd,pro,99,Stable financial indicators based on available metrics.,65
+79,Shree Cement Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+80,"Shriram Finance Ltd
+",pro,4,Strong profit margin indicates operational efficiency.,85
+80,"Shriram Finance Ltd
+",con,99,No major negative signal detected; continuous monitoring recommended.,65
+81,Siemens Ltd,pro,99,Stable financial indicators based on available metrics.,65
+81,Siemens Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+82,Sun Pharmaceuticals Industries Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+82,Sun Pharmaceuticals Industries Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+83,Tata Consumer Products Ltd,pro,99,Stable financial indicators based on available metrics.,65
+83,Tata Consumer Products Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+84,Tata Motors Ltd,pro,99,Stable financial indicators based on available metrics.,65
+84,Tata Motors Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+85,"Tata Power Company Ltd
+",pro,99,Stable financial indicators based on available metrics.,65
+85,"Tata Power Company Ltd
+",con,99,No major negative signal detected; continuous monitoring recommended.,65
+86,"Tata Steel Ltd
+",pro,99,Stable financial indicators based on available metrics.,65
+86,"Tata Steel Ltd
+",con,12,Low profit margin indicates operational pressure.,80
+87,Tata Consultancy Services Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+87,Tata Consultancy Services Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+88,Tech Mahindra Ltd,pro,99,Stable financial indicators based on available metrics.,65
+88,Tech Mahindra Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+89,"Titan Company Ltd
+",pro,99,Stable financial indicators based on available metrics.,65
+89,"Titan Company Ltd
+",con,99,No major negative signal detected; continuous monitoring recommended.,65
+90,Torrent Pharmaceuticals Ltd,pro,4,Strong profit margin indicates operational efficiency.,85
+90,Torrent Pharmaceuticals Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+91,Trent Ltd,pro,99,Stable financial indicators based on available metrics.,65
+91,Trent Ltd,con,99,No major negative signal detected; continuous monitoring recommended.,65
+92,TVS Motor Company Ltd,pro,99,Stable financial indicators based on available metrics.,65
+92,TVS Motor Company Ltd,con,12,Low profit margin indicates operational pressure.,80
